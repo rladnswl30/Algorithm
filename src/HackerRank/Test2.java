@@ -1,3 +1,5 @@
+package HackerRank;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -44,31 +46,31 @@ public class Test2 {
     public static long findMaxProducts(List<Integer> products) {
         // Write your code here
 
-//        // O(n^2)
-//
-//        long max = 0;
-//
-//        for (int i = products.size() - 1; i >= 0; --i) { // for loop from end of products
-//            if (i != products.size() - 1 && products.get(i) < products.get(i + 1)) {
-//                continue;
-//            }
-//
-//            long productNum = products.get(i);
-//            long prev = productNum;
-//
-//            for (int j = i - 1; j >= 0; --j) { // for loop from end of i
-//                prev = Math.min(prev - 1, products.get(j));
-//
-//                productNum += prev;
-//                if (prev == 1)
-//                    break;
-//            }
-//
-//            max = Math.max(productNum, max);
-//        }
-//        return max;
+        // O(n^2)
 
-        return dp(0, 0, products);
+        long max = 0;
+
+        for (int i = products.size() - 1; i >= 0; --i) { // for loop from end of products
+            if (i != products.size() - 1 && products.get(i) < products.get(i + 1)) {
+                continue;
+            }
+
+            long productNum = products.get(i);
+            long prev = productNum;
+
+            for (int j = i - 1; j >= 0; --j) { // for loop from end of i
+                prev = Math.min(prev - 1, products.get(j));
+
+                productNum += prev;
+                if (prev == 1)
+                    break;
+            }
+
+            max = Math.max(productNum, max);
+        }
+        return max;
+
+//        return dp(0, 0, products);
     }
 
     private static long dp(int idx, long prevNum, List<Integer> products) {
